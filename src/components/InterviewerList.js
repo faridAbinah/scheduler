@@ -1,11 +1,12 @@
 import React from "react";
 import 'components/InterviewerList.scss';
 import InterviewerListItem from "./InterviewerListItem";
+import PropTypes from 'prop-types';
 
 
 export default function InterviewerList(props) {
  const {value,onChange} = props;
-
+  console.log("props", props);
   const ParsedInterviewers = props.interviewers.map((interviewer) =>
     <InterviewerListItem
     key={interviewer.id}
@@ -15,6 +16,8 @@ export default function InterviewerList(props) {
     setInterviewer={() => onChange(interviewer.id)}
   
     />);
+
+  
   return (
     <>
     <section className="interviewers">
@@ -26,3 +29,9 @@ export default function InterviewerList(props) {
     </>
   )
 }
+
+
+//Validates interviewers is an array that IS required
+InterviewerList.propTypes = {
+  interviewers: PropTypes.array.isRequired
+};
