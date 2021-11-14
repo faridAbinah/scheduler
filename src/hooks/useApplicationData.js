@@ -27,9 +27,6 @@ const useApplicationData = () => {
         Promise.resolve(axios.get('/api/appointments')),
         Promise.resolve(axios.get('/api/interviewers')),
       ]).then((all) => {
-        console.log(all[1]); 
-      
-        
         
         setState(prev => ({...prev, days: all[0].data,appointments: all[1].data,interviewers: all[2].data }));
         
@@ -38,7 +35,7 @@ const useApplicationData = () => {
   },[]);
 
   function bookInterview(id, interview) {
-    console.log("Book interviewer.................",id, interview);
+    
 
     const appointment = {
       ...state.appointments[id],

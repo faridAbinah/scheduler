@@ -25,21 +25,21 @@ export default function Appointment(props) {
 
   
 
-  console.log( "Props +++>++++>>>", props.id)
+  
   
 
   const {mode, transition, back} = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
     const {interview} = props;
-    console.log("Mode ----------",mode)
+   
     const student = interview && interview.student;
 
     const interviewerId = interview && interview.interviewer &&interview.interviewer.id;
 
     
   function save(name, interviewer) {
-    // console.log("name",name,"Interviewer",interviewer)
+   
     const interview = {
       student: name,
       interviewer
@@ -48,7 +48,7 @@ export default function Appointment(props) {
     props.bookInterview(props.id,interview)
     .then(result => transition(SHOW))
     .catch((err) => transition(ERROR_SAVE,true));
-    // console.log(interview)
+    
   }
 
   function confirm() {
@@ -65,7 +65,7 @@ export default function Appointment(props) {
       transition(EMPTY)
     })
     .catch((err) => {
-     console.log("inside catch block !!!!!!!!!!!!!!!!!")
+    
      
       transition(ERROR_DELETE, true)
     });
